@@ -2,15 +2,16 @@ export default async function displayShows(
   url,
   IMG_PATH,
   trendingShowsContainer,
-  recommendedShowsContainer
+  recommendedShowsContainer,
+  trending
 ) {
   const response = await fetch(url);
   const { results } = await response.json();
   console.log(results);
 
-  let i;
+  let i, showElement;
   for (i = 0; i < 6; i++) {
-    const showElement = document.createElement("div");
+    showElement = document.createElement("div");
     showElement.className = "swiper-slide trending-show";
     showElement.innerHTML = `
         <img class="trending-show__cover" src="${IMG_PATH}${
@@ -18,7 +19,9 @@ export default async function displayShows(
     }" alt="" />
         <div class="show__details">
         <p>${
-          results[i].release_date
+          results[i].release_date == ""
+            ? "unknown"
+            : results[i].release_date
             ? results[i].release_date.slice(0, 4)
             : results[i].first_air_date.slice(0, 4)
         }</p>
@@ -38,7 +41,7 @@ export default async function displayShows(
     trendingShowsContainer.appendChild(showElement);
   }
   for (i = 6; i < results.length; i++) {
-    const showElement = document.createElement("div");
+    showElement = document.createElement("div");
     showElement.className = "recommended-show";
     showElement.innerHTML = `
       <img class="recommended-show__cover" src="${IMG_PATH}${
