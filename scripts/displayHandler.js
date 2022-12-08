@@ -8,7 +8,6 @@ export default async function displayShows(
   const response = await fetch(url);
   const { results } = await response.json();
   console.log(results);
-
   let i, showElement;
   for (i = 0; i < 6; i++) {
     showElement = document.createElement("div");
