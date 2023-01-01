@@ -3,7 +3,6 @@ export default async function displayShows(
   IMG_PATH,
   trendingShowsContainer,
   recommendedShowsContainer,
-  trending
 ) {
   const response = await fetch(url);
   const { results } = await response.json();

@@ -6,7 +6,6 @@ const form = document.querySelector(".form");
 const searchInput = document.querySelector(".searcher");
 const trendingShowsContainer = document.querySelector(".swiper-wrapper");
 const recommendedShowsContainer = document.querySelector(".recommended-shows");
-const nav = document.querySelector(".genre-navigation");
 
 // get initial movies
 
